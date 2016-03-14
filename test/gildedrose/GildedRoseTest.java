@@ -31,8 +31,16 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void normalItemAgesByOne() {
+    public void sellInDecreasesByOne() {
         givenItem("Normal", 1, 1).afterUpdatingShop().sellInShouldBe(0);
+        givenItem("Aged Brie", 1, 0).afterUpdatingShop().sellInShouldBe(0);
+    }
+
+    @Ignore
+    @Test
+    public void sellInDoesNotBecomeNegative() {
+        givenItem("Normal", 0, 1).afterUpdatingShop().sellInShouldBe(0);
+        givenItem("Aged Brie", 0, 50).afterUpdatingShop().sellInShouldBe(0);
     }
 
     @Test
@@ -45,12 +53,6 @@ public class GildedRoseTest {
         givenItem("Normal", 0, 2).afterUpdatingShop().qualityShouldBe(0);
     }
 
-    @Ignore
-    @Test
-    public void normalSellInDoesNotBecomeNegative() {
-        givenItem("Normal", 0, 1).afterUpdatingShop().sellInShouldBe(0);
-    }
-
     @Test
     public void normalQualityDoesNotBecomeNegative() {
         givenItem("Normal", 1, 0).afterUpdatingShop().qualityShouldBe(0);
@@ -58,7 +60,7 @@ public class GildedRoseTest {
 
     @Test
     public void agedIncreasesQualityByOne() {
-        givenItem("Aged Brie", 1, 0).afterUpdatingShop().qualityShouldBe(1);
+        givenItem("Aged Brie", 1, 49).afterUpdatingShop().qualityShouldBe(50);
     }
 
     @Test
@@ -67,23 +69,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void agedItemAgesByOne() {
-        givenItem("Aged Brie", 1, 0).afterUpdatingShop().sellInShouldBe(0);
-    }
-
-    @Test
-    public void agedQualityGoesUpToFifty() {
-        givenItem("Aged Brie", 1, 49).afterUpdatingShop().qualityShouldBe(50);
-    }
-
-    @Test
     public void agedQualityMaxesAtFifty() {
         givenItem("Aged Brie", 1, 50).afterUpdatingShop().qualityShouldBe(50);
-    }
-
-    @Ignore
-    @Test
-    public void agedSellInDoesNotBecomeNegative() {
-        givenItem("Aged Brie", 0, 50).afterUpdatingShop().sellInShouldBe(0);
     }
 }

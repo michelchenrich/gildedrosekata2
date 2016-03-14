@@ -51,7 +51,6 @@ public class GildedRoseTest {
         givenAgedItem(1, 0).afterUpdatingShop().sellInShouldBe(0);
     }
 
-    @Ignore
     @Test
     public void sellInDoesNotBecomeNegative() {
         givenNormalItem(0, 1).afterUpdatingShop().sellInShouldBe(0);

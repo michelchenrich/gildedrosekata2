@@ -60,4 +60,9 @@ public class GildedRoseTest {
     public void agedIncreasesQualityByOne() {
         givenItem("Aged Brie", 1, 0).afterUpdatingShop().qualityShouldBe(1);
     }
+
+    @Test
+    public void expiredAgedIncreasesQualityByTwo() {
+        givenItem("Aged Brie", 0, 0).afterUpdatingShop().qualityShouldBe(2);
+    }
 }

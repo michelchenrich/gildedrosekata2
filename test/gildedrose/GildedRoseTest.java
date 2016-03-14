@@ -56,6 +56,7 @@ public class GildedRoseTest {
     public void sellInDoesNotBecomeNegative() {
         givenNormalItem(0, 1).afterUpdatingShop().sellInShouldBe(0);
         givenAgedItem(0, 50).afterUpdatingShop().sellInShouldBe(0);
+        givenTicket(0, 0).afterUpdatingShop().sellInShouldBe(0);
     }
 
     @Test
@@ -71,6 +72,7 @@ public class GildedRoseTest {
     @Test
     public void normalQualityDoesNotBecomeNegative() {
         givenNormalItem(1, 0).afterUpdatingShop().qualityShouldBe(0);
+        givenTicket(0, 0).afterUpdatingShop().qualityShouldBe(0);
     }
 
     @Test

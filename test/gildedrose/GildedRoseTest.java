@@ -86,8 +86,9 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void agedQualityMaxesAtFifty() {
+    public void qualityMaxesAtFifty() {
         givenAgedItem(1, 50).afterUpdatingShop().qualityShouldBe(50);
+        givenTicket(5, 50).afterUpdatingShop().qualityShouldBe(50);
     }
 
     @Test

@@ -117,4 +117,10 @@ public class GildedRoseTest {
     public void ticketDropsToZeroAfterExpiration() {
         givenTicket(0, 10).afterUpdatingShop().qualityShouldBe(0);
     }
+
+    @Ignore
+    @Test
+    public void ticketDropsToZeroOnExpiration() {
+        givenTicket(1, 10).afterUpdatingShop().qualityShouldBe(0);
+    }
 }

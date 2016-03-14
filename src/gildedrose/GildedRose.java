@@ -9,9 +9,7 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.type.equals(Type.LEGENDARY))
-                item.sellIn = item.sellIn - 1;
-
+            item.sellIn = item.sellIn - 1;
 
             switch (item.type) {
                 case NORMAL: {

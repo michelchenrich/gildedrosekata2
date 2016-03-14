@@ -15,9 +15,10 @@ public class GildedRose {
                 }
             } else if (!item.type.equals(Type.LEGENDARY)) {
                 if (item.quality < 50) {
-                    item.quality = item.quality + 1;
 
                     if (item.type.equals(Type.TICKET)) {
+                        item.quality = item.quality + 1;
+
                         if (item.sellIn <= 10) {
                             if (item.quality < 50) {
                                 item.quality = item.quality + 1;
@@ -29,6 +30,8 @@ public class GildedRose {
                                 item.quality = item.quality + 1;
                             }
                         }
+                    } else {
+                        item.quality = item.quality + 1;
                     }
                 }
             }

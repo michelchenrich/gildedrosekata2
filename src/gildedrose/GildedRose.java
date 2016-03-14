@@ -13,28 +13,25 @@ public class GildedRose {
                 if (item.quality > 0) {
                     item.quality = item.quality - 1;
                 }
-            } else if (item.type.equals(Type.TICKET) || item.type.equals(Type.AGED)) {
+            } else if (item.type.equals(Type.TICKET)) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
 
-                if (item.type.equals(Type.TICKET)) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-
-                        if (item.sellIn <= 10) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-
-                        if (item.sellIn <= 5) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
+                    if (item.sellIn <= 10) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
                         }
                     }
-                } else if (item.type.equals(Type.AGED)) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+
+                    if (item.sellIn <= 5) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
+                        }
                     }
+                }
+            } else if (item.type.equals(Type.AGED)) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
                 }
             }
 

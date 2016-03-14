@@ -8,6 +8,17 @@ import static org.junit.Assert.assertEquals;
 public class GildedRoseTest {
     private Item[] items = new Item[1];
 
+    private GildedRoseTest givenNormalItem(int sellIn, int quality) {
+        return givenItem("Normal", sellIn, quality);
+    }
+
+    private GildedRoseTest givenAgedItem(int sellIn, int quality) {
+        return givenItem("Aged Brie", sellIn, quality);
+    }
+
+    private GildedRoseTest givenLegendaryItem(int quality) {
+        return givenItem("Sulfuras, Hand of Ragnaros", 0, quality);
+    }
 
     private GildedRoseTest givenItem(String name, int sellIn, int quality) {
         items[0] = new Item(name, sellIn, quality);
@@ -32,49 +43,49 @@ public class GildedRoseTest {
 
     @Test
     public void sellInDecreasesByOne() {
-        givenItem("Normal", 1, 1).afterUpdatingShop().sellInShouldBe(0);
-        givenItem("Aged Brie", 1, 0).afterUpdatingShop().sellInShouldBe(0);
+        givenNormalItem(1, 1).afterUpdatingShop().sellInShouldBe(0);
+        givenAgedItem(1, 0).afterUpdatingShop().sellInShouldBe(0);
     }
 
     @Ignore
     @Test
     public void sellInDoesNotBecomeNegative() {
-        givenItem("Normal", 0, 1).afterUpdatingShop().sellInShouldBe(0);
-        givenItem("Aged Brie", 0, 50).afterUpdatingShop().sellInShouldBe(0);
+        givenNormalItem(0, 1).afterUpdatingShop().sellInShouldBe(0);
+        givenAgedItem(0, 50).afterUpdatingShop().sellInShouldBe(0);
     }
 
     @Test
     public void normalDecreasesQualityByOne() {
-        givenItem("Normal", 1, 1).afterUpdatingShop().qualityShouldBe(0);
+        givenNormalItem(1, 1).afterUpdatingShop().qualityShouldBe(0);
     }
 
     @Test
     public void expiredNormalDecreasesQualityByTwo() {
-        givenItem("Normal", 0, 2).afterUpdatingShop().qualityShouldBe(0);
+        givenNormalItem(0, 2).afterUpdatingShop().qualityShouldBe(0);
     }
 
     @Test
     public void normalQualityDoesNotBecomeNegative() {
-        givenItem("Normal", 1, 0).afterUpdatingShop().qualityShouldBe(0);
+        givenNormalItem(1, 0).afterUpdatingShop().qualityShouldBe(0);
     }
 
     @Test
     public void agedIncreasesQualityByOne() {
-        givenItem("Aged Brie", 1, 49).afterUpdatingShop().qualityShouldBe(50);
+        givenAgedItem(1, 49).afterUpdatingShop().qualityShouldBe(50);
     }
 
     @Test
     public void expiredAgedIncreasesQualityByTwo() {
-        givenItem("Aged Brie", 0, 0).afterUpdatingShop().qualityShouldBe(2);
+        givenAgedItem(0, 0).afterUpdatingShop().qualityShouldBe(2);
     }
 
     @Test
     public void agedQualityMaxesAtFifty() {
-        givenItem("Aged Brie", 1, 50).afterUpdatingShop().qualityShouldBe(50);
+        givenAgedItem(1, 50).afterUpdatingShop().qualityShouldBe(50);
     }
 
     @Test
     public void legendaryQualityNeverDecreases() {
-        givenItem("Sulfuras, Hand of Ragnaros", 0, 30).afterUpdatingShop().qualityShouldBe(30);
+        givenLegendaryItem(30).afterUpdatingShop().qualityShouldBe(30);
     }
 }

@@ -19,22 +19,19 @@ public class GildedRose {
                     break;
                 }
                 case TICKET: {
-                    if (item.sellIn == 0)
-                        item.quality = 0;
-                    else if (item.sellIn > 10)
+                    if (item.sellIn > 10)
                         item.quality += 1;
                     else if (item.sellIn > 5)
                         item.quality += 2;
-                    else
+                    else if (item.sellIn > 0)
                         item.quality += 3;
+                    else
+                        item.quality = 0;
                     item.quality = min(item.quality, 50);
                     break;
                 }
                 case AGED: {
-                    if (item.sellIn == 0)
-                        item.quality += 2;
-                    else
-                        item.quality += 1;
+                    item.quality += item.sellIn == 0 ? 2 : 1;
                     item.quality = min(item.quality, 50);
                     break;
                 }
@@ -42,7 +39,6 @@ public class GildedRose {
 
             if (item.sellIn > 0)
                 item.sellIn -= 1;
-
         }
     }
 }

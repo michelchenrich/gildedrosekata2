@@ -1,12 +1,14 @@
 package gildedrose;
 
+import static java.lang.Math.min;
+
 public class AgedItem extends TypedItem {
     public AgedItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality, Type.AGED);
+        super(name, sellIn, quality);
     }
 
-    public void update(){
-        updateAged();
-        updateSellIn();
+    protected void updateQuality() {
+        quality += (sellIn == 0 ? 2 : 1);
+        quality = min(quality, 50);
     }
 }

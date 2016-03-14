@@ -13,5 +13,9 @@ public abstract class Item {
         return quality;
     }
 
+    public String toString() {
+        return name + ", " + quality;
+    }
+
     public abstract void update();
 }

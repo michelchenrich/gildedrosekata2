@@ -8,7 +8,7 @@ public class NormalItem extends ExpirableItem {
     }
 
     protected void updateQuality() {
-        quality = quality - (sellIn == 0 ? 2 : 1);
+        quality -= sellIn == 0 ? 2 : 1;
         quality = max(quality, 0);
     }
 }

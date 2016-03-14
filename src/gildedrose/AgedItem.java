@@ -8,7 +8,7 @@ public class AgedItem extends ExpirableItem {
     }
 
     protected void updateQuality() {
-        quality += (sellIn == 0 ? 2 : 1);
+        quality += sellIn == 0 ? 2 : 1;
         quality = min(quality, 50);
     }
 }

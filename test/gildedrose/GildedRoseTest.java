@@ -80,4 +80,10 @@ public class GildedRoseTest {
     public void agedQualityMaxesAtFifty() {
         givenItem("Aged Brie", 1, 50).afterUpdatingShop().qualityShouldBe(50);
     }
+
+    @Ignore
+    @Test
+    public void agedSellInDoesNotBecomeNegative() {
+        givenItem("Aged Brie", 0, 50).afterUpdatingShop().sellInShouldBe(0);
+    }
 }

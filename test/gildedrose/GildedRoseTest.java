@@ -20,6 +20,10 @@ public class GildedRoseTest {
         return givenItem("Sulfuras, Hand of Ragnaros", 0, quality);
     }
 
+    private GildedRoseTest givenTicket(int sellIn, int quality) {
+        return givenItem("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
+    }
+
     private GildedRoseTest givenItem(String name, int sellIn, int quality) {
         items[0] = new Item(name, sellIn, quality);
         return this;
@@ -92,5 +96,10 @@ public class GildedRoseTest {
     @Test
     public void legendaryQualityCanBeOverFifty() {
         givenLegendaryItem(51).afterUpdatingShop().qualityShouldBe(51);
+    }
+
+    @Test
+    public void ticketIncreasesQualityByOneBeforeTenDaysFromExpiration() {
+        givenTicket(11, 0).afterUpdatingShop().qualityShouldBe(1);
     }
 }

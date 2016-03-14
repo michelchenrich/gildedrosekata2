@@ -1,14 +1,10 @@
 package gildedrose;
 
 public class Item {
-
-    public String name;
-
-    public int sellIn;
-
-    public int quality;
-
-    public Type type;
+    private String name;
+    private int sellIn;
+    private int quality;
+    private Type type;
 
     public Item(String name, int sellIn, int quality) {
         this(name, sellIn, quality, null);
@@ -24,5 +20,25 @@ public class Item {
     @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
+    }
+
+    Type getType() {
+        return type;
+    }
+
+    int getSellIn() {
+        return sellIn;
+    }
+
+    void setQuality(int quality) {
+        this.quality = quality;
+    }
+
+    int getQuality() {
+        return quality;
+    }
+
+    void setSellIn(int sellIn) {
+        this.sellIn = sellIn;
     }
 }

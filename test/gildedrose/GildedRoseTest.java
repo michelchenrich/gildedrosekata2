@@ -36,12 +36,12 @@ public class GildedRoseTest {
     }
 
     private GildedRoseTest sellInShouldBe(int sellIn) {
-        assertEquals(sellIn, items[0].sellIn);
+        assertEquals(sellIn, items[0].getSellIn());
         return this;
     }
 
     private GildedRoseTest qualityShouldBe(int quality) {
-        assertEquals(quality, items[0].quality);
+        assertEquals(quality, items[0].getQuality());
         return this;
     }
 

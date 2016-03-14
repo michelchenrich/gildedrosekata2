@@ -12,33 +12,34 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            switch (item.type) {
+            switch (item.getType()) {
                 case NORMAL: {
-                    item.quality -= item.sellIn == 0 ? 2 : 1;
-                    item.quality = max(item.quality, 0);
+                    item.setQuality(item.getQuality() - (item.getSellIn() == 0 ? 2 : 1));
+                    item.setQuality(max(item.getQuality(), 0));
                     break;
                 }
                 case TICKET: {
-                    if (item.sellIn > 10)
-                        item.quality += 1;
-                    else if (item.sellIn > 5)
-                        item.quality += 2;
-                    else if (item.sellIn > 0)
-                        item.quality += 3;
+                    if (item.getSellIn() > 10)
+                        item.setQuality(item.getQuality() + 1);
+                    else if (item.getSellIn() > 5)
+                        item.setQuality(item.getQuality() + 2);
+                    else if (item.getSellIn() > 0)
+                        item.setQuality(item.getQuality() + 3);
                     else
-                        item.quality = 0;
-                    item.quality = min(item.quality, 50);
+                        item.setQuality(0);
+                    item.setQuality(min(item.getQuality(), 50));
                     break;
                 }
                 case AGED: {
-                    item.quality += item.sellIn == 0 ? 2 : 1;
-                    item.quality = min(item.quality, 50);
+                    item.setQuality(item.getQuality() + (item.getSellIn() == 0 ? 2 : 1));
+                    item.setQuality(min(item.getQuality(), 50));
                     break;
                 }
             }
 
-            if (item.sellIn > 0)
-                item.sellIn -= 1;
+            if (item.getSellIn() > 0)
+                item.setSellIn(item.getSellIn() - 1);
         }
     }
+
 }

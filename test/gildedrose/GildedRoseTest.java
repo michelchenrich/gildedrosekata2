@@ -75,4 +75,9 @@ public class GildedRoseTest {
     public void agedQualityGoesUpToFifty() {
         givenItem("Aged Brie", 1, 49).afterUpdatingShop().qualityShouldBe(50);
     }
+
+    @Test
+    public void agedQualityMaxesAtFifty() {
+        givenItem("Aged Brie", 1, 50).afterUpdatingShop().qualityShouldBe(50);
+    }
 }

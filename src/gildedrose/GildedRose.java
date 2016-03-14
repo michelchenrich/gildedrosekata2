@@ -14,10 +14,7 @@ public class GildedRose {
         for (Item item : items) {
             switch (item.type) {
                 case NORMAL: {
-                    if (item.sellIn == 0)
-                        item.quality -= 2;
-                    else
-                        item.quality -= 1;
+                    item.quality -= item.sellIn == 0 ? 2 : 1;
                     item.quality = max(item.quality, 0);
                     break;
                 }

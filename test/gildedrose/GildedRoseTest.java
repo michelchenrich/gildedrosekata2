@@ -1,5 +1,6 @@
 package gildedrose;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -42,6 +43,12 @@ public class GildedRoseTest {
     @Test
     public void expiredNormalDecreasesQualityByTwo() {
         givenItem("Normal", 0, 2).afterUpdatingShop().qualityShouldBe(0);
+    }
+
+    @Ignore
+    @Test
+    public void normalSellInDoesNotBecomeNegative() {
+        givenItem("Normal", 0, 1).afterUpdatingShop().sellInShouldBe(0);
     }
 
     @Test

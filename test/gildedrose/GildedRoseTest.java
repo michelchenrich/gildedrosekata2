@@ -38,4 +38,9 @@ public class GildedRoseTest {
     public void normalDecreasesQualityByOne() {
         givenItem("Normal", 1, 1).afterUpdatingShop().qualityShouldBe(0);
     }
+
+    @Test
+    public void expiredNormalDecreasesQualityByTwo() {
+        givenItem("Normal", 0, 2).afterUpdatingShop().qualityShouldBe(0);
+    }
 }

@@ -9,20 +9,17 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.type.equals(Type.LEGENDARY)) {
+            if (!item.type.equals(Type.LEGENDARY))
                 item.sellIn = item.sellIn - 1;
-            }
+
 
             switch (item.type) {
                 case NORMAL: {
-                    if (item.quality > 0) {
-                        item.quality = item.quality - 1;
-                    }
-                    if (item.sellIn < 0) {
-                        if (item.quality > 0) {
+                    if (item.quality > 0)
+                        if (item.sellIn < 0)
+                            item.quality = item.quality - 2;
+                        else
                             item.quality = item.quality - 1;
-                        }
-                    }
                     break;
                 }
                 case TICKET: {

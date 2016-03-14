@@ -38,7 +38,6 @@ public class TextBasedMain {
         public void run() {
             System.out.println("Welcome to the Gilded Rose shop!");
             printUpdates();
-
         }
 
         private void printUpdates() {

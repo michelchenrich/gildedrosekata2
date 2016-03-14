@@ -133,4 +133,9 @@ public class GildedRoseTest {
     public void conjuredDecreasesQualityByTwo() {
         givenConjuredItem(1, 2).afterUpdatingShop().qualityShouldBe(0);
     }
+
+    @Test
+    public void expiredConjuredDecreasesQualityByFour() {
+        givenConjuredItem(0, 4).afterUpdatingShop().qualityShouldBe(0);
+    }
 }

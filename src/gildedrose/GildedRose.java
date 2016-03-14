@@ -9,11 +9,11 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.type.equals(Type.AGED) && !item.type.equals(Type.TICKET)) {
-                if (item.quality > 0 && !item.type.equals(Type.LEGENDARY)) {
+            if (!item.type.equals(Type.AGED) && !item.type.equals(Type.TICKET) && !item.type.equals(Type.LEGENDARY)) {
+                if (item.quality > 0) {
                     item.quality = item.quality - 1;
                 }
-            } else {
+            } else if (!item.type.equals(Type.LEGENDARY)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
 

@@ -8,23 +8,22 @@ public class GildedRoseTest {
     private Item[] items = new Item[1];
 
     private GildedRoseTest givenNormalItem(int sellIn, int quality) {
-        return givenItem("Normal", sellIn, quality, Type.NORMAL);
+        items[0] = new NormalItem("Normal", sellIn, quality);
+        return this;
     }
 
     private GildedRoseTest givenAgedItem(int sellIn, int quality) {
-        return givenItem("Aged", sellIn, quality, Type.AGED);
+        items[0] = new AgedItem("Aged", sellIn, quality);
+        return this;
     }
 
     private GildedRoseTest givenLegendaryItem(int quality) {
-        return givenItem("Legendary", 0, quality, Type.LEGENDARY);
+        items[0] = new LegendaryItem("Legendary", quality);
+        return this;
     }
 
     private GildedRoseTest givenTicket(int sellIn, int quality) {
-        return givenItem("Ticket", sellIn, quality, Type.TICKET);
-    }
-
-    private GildedRoseTest givenItem(String name, int sellIn, int quality, Type type) {
-        items[0] = new TypedItem(name, sellIn, quality, type);
+        items[0] = new Ticket("Ticket", sellIn, quality);
         return this;
     }
 

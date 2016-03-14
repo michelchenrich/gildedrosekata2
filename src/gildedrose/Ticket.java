@@ -2,7 +2,7 @@ package gildedrose;
 
 import static java.lang.Math.min;
 
-public class Ticket extends TypedItem {
+public class Ticket extends ExpirableItem {
     public Ticket(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }

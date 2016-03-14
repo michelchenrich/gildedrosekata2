@@ -2,7 +2,7 @@ package gildedrose;
 
 import static java.lang.Math.min;
 
-public class AgedItem extends TypedItem {
+public class AgedItem extends ExpirableItem {
     public AgedItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }

@@ -34,7 +34,8 @@ public class GildedRoseTest {
     }
 
     private GildedRoseTest sellInShouldBe(int sellIn) {
-        assertEquals(sellIn, items[0].getSellIn());
+        ExpirableItem expirable = (ExpirableItem) items[0];
+        assertEquals(sellIn, expirable.getSellIn());
         return this;
     }
 

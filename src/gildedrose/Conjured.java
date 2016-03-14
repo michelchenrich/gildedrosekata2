@@ -1,21 +1,11 @@
 package gildedrose;
 
-public class Conjured implements Item {
+public class Conjured extends ExpirableItem {
     public Conjured(String name, int sellIn, int quality) {
+        super(name, sellIn, quality);
     }
 
-    @Override
-    public int getQuality() {
-        return 0;
-    }
-
-    @Override
-    public int getSellIn() {
-        return 0;
-    }
-
-    @Override
-    public void update() {
+    protected void updateQuality() {
 
     }
 }

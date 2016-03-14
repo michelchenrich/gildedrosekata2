@@ -1,7 +1,17 @@
 package gildedrose;
 
-public interface Item {
-    int getQuality();
-    int getSellIn();
-    void update();
+public abstract class Item {
+    protected String name;
+    protected int quality;
+
+    public Item(String name, int quality) {
+        this.name = name;
+        this.quality = quality;
+    }
+
+    public int getQuality() {
+        return quality;
+    }
+
+    public abstract void update();
 }

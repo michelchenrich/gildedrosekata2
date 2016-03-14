@@ -1,13 +1,11 @@
 package gildedrose;
 
-public class LegendaryItem extends TypedItem {
+public class LegendaryItem extends Item {
     public LegendaryItem(String name, int quality) {
-        super(name, 0, quality);
+        super(name, quality);
     }
 
-    protected void updateQuality() {
-    }
-
-    protected void updateSellIn() {
+    public void update() {
+        // does nothing
     }
 }

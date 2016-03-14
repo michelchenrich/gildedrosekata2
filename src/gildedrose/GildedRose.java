@@ -1,5 +1,8 @@
 package gildedrose;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 public class GildedRose {
     Item[] items;
 
@@ -15,8 +18,7 @@ public class GildedRose {
                         item.quality -= 2;
                     else
                         item.quality -= 1;
-                    if (item.quality < 0)
-                        item.quality = 0;
+                    item.quality = max(item.quality, 0);
                     break;
                 }
                 case TICKET: {
@@ -28,8 +30,7 @@ public class GildedRose {
                         item.quality += 2;
                     else
                         item.quality += 3;
-                    if (item.quality > 50)
-                        item.quality = 50;
+                    item.quality = min(item.quality, 50);
                     break;
                 }
                 case AGED: {
@@ -37,8 +38,7 @@ public class GildedRose {
                         item.quality += 2;
                     else
                         item.quality += 1;
-                    if (item.quality > 50)
-                        item.quality = 50;
+                    item.quality = min(item.quality, 50);
                     break;
                 }
             }

@@ -24,7 +24,7 @@ public class GildedRoseTest {
     }
 
     private GildedRoseTest givenItem(String name, int sellIn, int quality, Type type) {
-        items[0] = new Item(name, sellIn, quality, type);
+        items[0] = new TypedItem(name, sellIn, quality, type);
         return this;
     }
 

@@ -88,4 +88,9 @@ public class GildedRoseTest {
     public void legendaryQualityNeverDecreases() {
         givenLegendaryItem(30).afterUpdatingShop().qualityShouldBe(30);
     }
+
+    @Test
+    public void legendaryQualityCanBeOverFifty() {
+        givenLegendaryItem(51).afterUpdatingShop().qualityShouldBe(51);
+    }
 }

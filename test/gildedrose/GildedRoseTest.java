@@ -27,6 +27,11 @@ public class GildedRoseTest {
         return this;
     }
 
+    private GildedRoseTest givenConjuredItem(int sellIn, int quality) {
+        items[0] = new Conjured("Conjured", sellIn, quality);
+        return this;
+    }
+
     private GildedRoseTest afterUpdatingShop() {
         GildedRose shop = new GildedRose(items);
         shop.updateQuality();
@@ -48,6 +53,7 @@ public class GildedRoseTest {
     public void sellInDecreasesByOne() {
         givenNormalItem(1, 1).afterUpdatingShop().sellInShouldBe(0);
         givenAgedItem(1, 0).afterUpdatingShop().sellInShouldBe(0);
+        givenConjuredItem(1, 1).afterUpdatingShop().sellInShouldBe(0);
     }
 
     @Test
@@ -55,6 +61,7 @@ public class GildedRoseTest {
         givenNormalItem(0, 1).afterUpdatingShop().sellInShouldBe(0);
         givenAgedItem(0, 50).afterUpdatingShop().sellInShouldBe(0);
         givenTicket(0, 0).afterUpdatingShop().sellInShouldBe(0);
+        givenConjuredItem(0, 1).afterUpdatingShop().sellInShouldBe(0);
     }
 
     @Test

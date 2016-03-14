@@ -70,4 +70,9 @@ public class GildedRoseTest {
     public void agedItemAgesByOne() {
         givenItem("Aged Brie", 1, 0).afterUpdatingShop().sellInShouldBe(0);
     }
+
+    @Test
+    public void agedQualityGoesUpToFifty() {
+        givenItem("Aged Brie", 1, 49).afterUpdatingShop().qualityShouldBe(50);
+    }
 }

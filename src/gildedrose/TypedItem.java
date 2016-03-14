@@ -55,12 +55,12 @@ public class TypedItem implements Item {
         }
     }
 
-    private void updateNormal() {
+    protected void updateNormal() {
         quality = quality - (sellIn == 0 ? 2 : 1);
         quality = max(quality, 0);
     }
 
-    private void updateTicket() {
+    protected void updateTicket() {
         if (sellIn > 10)
             quality += 1;
         else if (sellIn > 5)
@@ -72,12 +72,12 @@ public class TypedItem implements Item {
         quality = min(quality, 50);
     }
 
-    private void updateAged() {
+    protected void updateAged() {
         quality += (sellIn == 0 ? 2 : 1);
         quality = min(quality, 50);
     }
 
-    private void updateSellIn() {
+    protected void updateSellIn() {
         if (sellIn > 0)
             this.sellIn -= 1;
     }

@@ -128,4 +128,9 @@ public class GildedRoseTest {
     public void ticketDropsToZeroAfterExpiration() {
         givenTicket(0, 10).afterUpdatingShop().qualityShouldBe(0);
     }
+
+    @Test
+    public void conjuredDecreasesQualityByTwo() {
+        givenConjuredItem(1, 2).afterUpdatingShop().qualityShouldBe(0);
+    }
 }

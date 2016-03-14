@@ -6,6 +6,6 @@ public class Conjured extends ExpirableItem {
     }
 
     protected void updateQuality() {
-
+        quality -= 2;
     }
 }

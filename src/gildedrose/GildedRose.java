@@ -17,6 +17,11 @@ public class GildedRose {
                 if (item.quality > 0) {
                     item.quality = item.quality - 1;
                 }
+                if (item.sellIn < 0) {
+                    if (item.quality > 0) {
+                        item.quality = item.quality - 1;
+                    }
+                }
             } else if (item.type.equals(Type.TICKET)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
@@ -43,14 +48,6 @@ public class GildedRose {
                 if (item.sellIn < 0) {
                     if (item.quality < 50) {
                         item.quality = item.quality + 1;
-                    }
-                }
-            }
-
-            if (item.type.equals(Type.NORMAL)) {
-                if (item.sellIn < 0) {
-                    if (item.quality > 0) {
-                        item.quality = item.quality - 1;
                     }
                 }
             }

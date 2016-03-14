@@ -33,11 +33,12 @@ public class GildedRose {
                     break;
                 }
                 case AGED: {
-                    if (item.quality < 50)
-                        if (item.sellIn == 0)
-                            item.quality += 2;
-                        else
-                            item.quality += 1;
+                    if (item.sellIn == 0)
+                        item.quality += 2;
+                    else
+                        item.quality += 1;
+                    if (item.quality > 50)
+                        item.quality = 50;
                     break;
                 }
             }

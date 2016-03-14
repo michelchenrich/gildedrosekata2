@@ -33,34 +33,48 @@ public class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    void updateQuality() {
+    void update() {
         switch (type) {
-            case NORMAL: {
-                quality = quality - (sellIn == 0 ? 2 : 1);
-                quality = max(quality, 0);
+            case NORMAL:
+                updateNormal();
+                updateSellIn();
                 break;
-            }
-            case TICKET: {
-                if (sellIn > 10)
-                    quality += 1;
-                else if (sellIn > 5)
-                    quality += 2;
-                else if (sellIn > 0)
-                    quality += 3;
-                else
-                    quality = 0;
-                quality = min(quality, 50);
+            case TICKET:
+                updateTicket();
+                updateSellIn();
                 break;
-            }
-            case AGED: {
-                quality += (sellIn == 0 ? 2 : 1);
-                quality = min(quality, 50);
+            case AGED:
+                updateAged();
+                updateSellIn();
                 break;
-            }
+            case LEGENDARY:
+                break;
         }
     }
 
-    void updateSellIn() {
+    private void updateNormal() {
+        quality = quality - (sellIn == 0 ? 2 : 1);
+        quality = max(quality, 0);
+    }
+
+    private void updateTicket() {
+        if (sellIn > 10)
+            quality += 1;
+        else if (sellIn > 5)
+            quality += 2;
+        else if (sellIn > 0)
+            quality += 3;
+        else
+            quality = 0;
+        quality = min(quality, 50);
+    }
+
+    private void updateAged() {
+        quality += (sellIn == 0 ? 2 : 1);
+        quality = min(quality, 50);
+    }
+
+    private void updateSellIn() {
         if (sellIn > 0)
             this.sellIn -= 1;
     }

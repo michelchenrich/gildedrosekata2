@@ -9,11 +9,6 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items)
-            updateItem(item);
-    }
-
-    private void updateItem(Item item) {
-        item.updateQuality();
-        item.updateSellIn();
+            item.update();
     }
 }

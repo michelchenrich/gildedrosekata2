@@ -7,5 +7,6 @@ public class Conjured extends ExpirableItem {
 
     protected void updateQuality() {
         quality -= sellIn == 0 ? 4 : 2;
+        quality = Math.max(quality, 0);
     }
 }

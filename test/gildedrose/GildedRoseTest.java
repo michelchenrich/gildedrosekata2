@@ -75,9 +75,10 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void normalQualityDoesNotBecomeNegative() {
+    public void qualityDoesNotBecomeNegative() {
         givenNormalItem(1, 0).afterUpdatingShop().qualityShouldBe(0);
         givenTicket(0, 0).afterUpdatingShop().qualityShouldBe(0);
+        givenConjuredItem(0, 0).afterUpdatingShop().qualityShouldBe(0);
     }
 
     @Test

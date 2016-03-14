@@ -72,4 +72,9 @@ public class GildedRoseTest {
     public void agedQualityMaxesAtFifty() {
         givenItem("Aged Brie", 1, 50).afterUpdatingShop().qualityShouldBe(50);
     }
+
+    @Test
+    public void legendaryQualityNeverDecreases() {
+        givenItem("Sulfuras, Hand of Ragnaros", 0, 30).afterUpdatingShop().qualityShouldBe(30);
+    }
 }

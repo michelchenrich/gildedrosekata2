@@ -13,10 +13,10 @@ public abstract class ExpirableItem extends Item {
     }
 
     public String toString() {
-        return super.toString() + ", " + sellIn;
+        return String.format("%s, Sell in: %d", super.toString(), sellIn);
     }
 
-    public void update(){
+    public void update() {
         updateQuality();
         updateSellIn();
     }

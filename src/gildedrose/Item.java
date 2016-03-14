@@ -14,7 +14,7 @@ public abstract class Item {
     }
 
     public String toString() {
-        return name + ", " + quality;
+        return String.format("Name: %s, Quality: %d", name, quality);
     }
 
     public abstract void update();

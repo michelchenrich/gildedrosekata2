@@ -1,52 +1,57 @@
 package gildedrose;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class GildedRoseTest {
-    private Item[] items = new Item[1];
+    private Item item;
 
     private GildedRoseTest givenNormalItem(int sellIn, int quality) {
-        items[0] = new NormalItem("Normal", sellIn, quality);
+        item = new NormalItem("Normal", sellIn, quality);
         return this;
     }
 
     private GildedRoseTest givenAgedItem(int sellIn, int quality) {
-        items[0] = new AgedItem("Aged", sellIn, quality);
+        item = new AgedItem("Aged", sellIn, quality);
         return this;
     }
 
     private GildedRoseTest givenLegendaryItem(int quality) {
-        items[0] = new LegendaryItem("Legendary", quality);
+        item = new LegendaryItem("Legendary", quality);
         return this;
     }
 
     private GildedRoseTest givenTicket(int sellIn, int quality) {
-        items[0] = new Ticket("Ticket", sellIn, quality);
+        item = new Ticket("Ticket", sellIn, quality);
         return this;
     }
 
     private GildedRoseTest givenConjuredItem(int sellIn, int quality) {
-        items[0] = new Conjured("Conjured", sellIn, quality);
+        item = new Conjured("Conjured", sellIn, quality);
         return this;
     }
 
     private GildedRoseTest afterUpdatingShop() {
-        GildedRose shop = new GildedRose(items);
+        GildedRose shop = new GildedRose(new Item[]{item});
         shop.updateQuality();
         return this;
     }
 
     private GildedRoseTest sellInShouldBe(int sellIn) {
-        ExpirableItem expirable = (ExpirableItem) items[0];
+        ExpirableItem expirable = (ExpirableItem) item;
         assertEquals(sellIn, expirable.getSellIn());
         return this;
     }
 
     private GildedRoseTest qualityShouldBe(int quality) {
-        assertEquals(quality, items[0].getQuality());
+        assertEquals(quality, item.getQuality());
         return this;
+    }
+
+    private void shouldPrint(String itemString) {
+        assertEquals(itemString, item.toString());
     }
 
     @Test
@@ -138,5 +143,13 @@ public class GildedRoseTest {
     @Test
     public void expiredConjuredDecreasesQualityByFour() {
         givenConjuredItem(0, 4).afterUpdatingShop().qualityShouldBe(0);
+    }
+
+    @Test
+    public void printDataToString() {
+        givenNormalItem(10, 10).shouldPrint("Name: Normal, Quality: 10, Sell in: 10");
+        givenAgedItem(10, 10).shouldPrint("Name: Aged, Quality: 10, Sell in: 10");
+        givenTicket(10, 10).shouldPrint("Name: Ticket, Quality: 10, Sell in: 10");
+        givenLegendaryItem(10).shouldPrint("Name: Legendary, Quality: 10");
     }
 }

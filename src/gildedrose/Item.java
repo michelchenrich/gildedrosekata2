@@ -1,5 +1,8 @@
 package gildedrose;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 public class Item {
     private String name;
     private int sellIn;
@@ -17,28 +20,48 @@ public class Item {
         this.type = type;
     }
 
+    public int getQuality() {
+        return quality;
+    }
+
+    public int getSellIn() {
+        return sellIn;
+    }
+
     @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    Type getType() {
-        return type;
+    void updateQuality() {
+        switch (type) {
+            case NORMAL: {
+                quality = quality - (sellIn == 0 ? 2 : 1);
+                quality = max(quality, 0);
+                break;
+            }
+            case TICKET: {
+                if (sellIn > 10)
+                    quality += 1;
+                else if (sellIn > 5)
+                    quality += 2;
+                else if (sellIn > 0)
+                    quality += 3;
+                else
+                    quality = 0;
+                quality = min(quality, 50);
+                break;
+            }
+            case AGED: {
+                quality += (sellIn == 0 ? 2 : 1);
+                quality = min(quality, 50);
+                break;
+            }
+        }
     }
 
-    int getSellIn() {
-        return sellIn;
-    }
-
-    void setQuality(int quality) {
-        this.quality = quality;
-    }
-
-    int getQuality() {
-        return quality;
-    }
-
-    void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
+    void updateSellIn() {
+        if (sellIn > 0)
+            this.sellIn -= 1;
     }
 }

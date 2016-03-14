@@ -107,4 +107,9 @@ public class GildedRoseTest {
     public void ticketIncreasesQualityByTwoTenDaysFromExpiration() {
         givenTicket(10, 0).afterUpdatingShop().qualityShouldBe(2);
     }
+
+    @Test
+    public void ticketIncreasesQualityByThreeFiveDaysFromExpiration() {
+        givenTicket(5, 0).afterUpdatingShop().qualityShouldBe(3);
+    }
 }

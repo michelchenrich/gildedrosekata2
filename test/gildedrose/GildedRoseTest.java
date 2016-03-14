@@ -55,4 +55,9 @@ public class GildedRoseTest {
     public void normalQualityDoesNotBecomeNegative() {
         givenItem("Normal", 1, 0).afterUpdatingShop().qualityShouldBe(0);
     }
+
+    @Test
+    public void agedIncreasesQualityByOne() {
+        givenItem("Aged Brie", 1, 0).afterUpdatingShop().qualityShouldBe(1);
+    }
 }

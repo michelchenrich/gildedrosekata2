@@ -8,10 +8,17 @@ public class Item {
 
     public int quality;
 
+    public Type type;
+
     public Item(String name, int sellIn, int quality) {
+        this(name, sellIn, quality, null);
+    }
+
+    public Item(String name, int sellIn, int quality, Type type) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+        this.type = type;
     }
 
     @Override

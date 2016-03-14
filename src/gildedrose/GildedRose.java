@@ -13,9 +13,8 @@ public class GildedRose {
                 if (item.quality > 0) {
                     item.quality = item.quality - 1;
                 }
-            } else if (!item.type.equals(Type.LEGENDARY)) {
+            } else if (item.type.equals(Type.TICKET) || item.type.equals(Type.AGED)) {
                 if (item.quality < 50) {
-
                     if (item.type.equals(Type.TICKET)) {
                         item.quality = item.quality + 1;
 
@@ -30,7 +29,7 @@ public class GildedRose {
                                 item.quality = item.quality + 1;
                             }
                         }
-                    } else {
+                    } else if (item.type.equals(Type.AGED)) {
                         item.quality = item.quality + 1;
                     }
                 }
